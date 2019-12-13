@@ -1,6 +1,6 @@
 FROM debian:buster
 
-LABEL maintainer="Colin Wilson colin@wyveo.com"
+LABEL maintainer="Lotfi Messaoudi lotfi@messaoudi.me"
 
 # Let the container know that there is no tty
 ENV DEBIAN_FRONTEND noninteractive
@@ -105,6 +105,9 @@ ADD ./supervisord.conf /etc/supervisord.conf
 
 # Override nginx's default config
 ADD ./default.conf /etc/nginx/conf.d/default.conf
+
+# Override php-fpm's default config
+ADD ./www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 # Override default nginx welcome page
 COPY html /usr/share/nginx/html
